@@ -4,25 +4,13 @@ using UnityEngine;
 
 public class AnswerBox : MonoBehaviour
 {
-
-
+    AnswerBoxController abc;
+    public bool isFill = false;
+    void Start(){
+        abc = FindObjectOfType<AnswerBoxController>();
+    }
     public int ans;
-    bool isFill = false;
-
-    void cleared()
-    {
-        //change scene
-    }
-
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+    public void sentValue(int value){
+        abc.checkLetter(value);
     }
 }

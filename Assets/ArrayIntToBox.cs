@@ -10,24 +10,16 @@ public class ArrayIntToBox : MonoBehaviour {
 	public Sprite[] letter ;
 	SpriteRenderer sr;
 
-	public int[] array ;
-
 	public GameObject ans;
 
-	public PlayerController pc;
+	public Sprite[] boxArray;
 
 	public int rand;
 
 	public int[] randomLetter = new int[correctLetter.Length + ADDEDRANDOMLETTER];
 	// Use this for initialization
 	void Start () {
-		sr = gameObject.GetComponent<SpriteRenderer>();
-		pc = FindObjectOfType<PlayerController>();
-		randomizeLetter();
-		array = randomLetter;
-		int size = array.Length ;
-		rand = Random.Range(0,size-1);
-		put(array[rand]);
+
 	}
 	// Update is called once per frame
 	
@@ -52,15 +44,11 @@ public class ArrayIntToBox : MonoBehaviour {
 			}
 		}
 		return false;
-
-        // if (num == ansValue && !isFill)
-        // {
-        //     isFill = true;
-        //     // change sprite
-        //     return true;
-        // }
-        // return false;
     }
+
+	void put(int value){
+		ans.GetComponent<SpriteRenderer>().sprite = letter[value];
+	}
 
     const int ADDEDRANDOMLETTER = 3;
     public static int[] correctLetter = new int[] { 'c', 'a', 't' };
@@ -78,18 +66,9 @@ public class ArrayIntToBox : MonoBehaviour {
             {
                 int ran = Random.Range(97, 122);
                 randomLetter[i] = ran - 'a';
-
-        //         Debug.Log(randomLetter[i]);
             }
         }
 
-        // Debug.Log("=========================================================================================");
-        // for(int i = 0; i < randomLetter.Length - 1; i++){
-        //     Debug.Log(randomLetter[i]);
-        // }
     }
-	void put(int value){
-		ans.GetComponent<SpriteRenderer>().sprite = letter[value];
-	}
 
 }

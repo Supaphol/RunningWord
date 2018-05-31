@@ -16,4 +16,5 @@ public class AnsBox : MonoBehaviour {
 	void cleared(){
 		//change scene
 	}
+
 }

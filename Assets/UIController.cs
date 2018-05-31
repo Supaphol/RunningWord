@@ -14,7 +14,7 @@ public class UIController : MonoBehaviour
 
     public float remainingTime;
 
-    public float startTime;
+    static public float startTime;
     public PlayerController player;
     private float pickupItemTime  = 0;
 
@@ -59,11 +59,16 @@ public class UIController : MonoBehaviour
         }
         if(itemNum ==2){
             GameObject item = (GameObject)Instantiate(immortalItemCanvas);
-            Destroy(item,9.8f);
+            Destroy(item,9f);
         }
         if(itemNum ==3){
             GameObject item = (GameObject)Instantiate(timeItemCanvas);
             Destroy(item,1);
         }
     }
+
+    static public void decreaseTime(){
+       startTime -=10;
+    }
+
 }

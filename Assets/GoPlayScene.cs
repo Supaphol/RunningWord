@@ -5,32 +5,34 @@ using UnityEngine.SceneManagement;
 
 public class GoPlayScene : MonoBehaviour {
 
-private int stage;
-private int level;
+private int stage =1;
+private int level =1;
 
-private static int last;
+public static int last =0;
 private string text ;
 private float currentTime;
+
 	// Use this for initialization
 	void Start () {
-		if(last != 0){
 			level = last % 5 + 1;
 			stage = last / 5 + 1;
-		}
 
 		currentTime = Time.time+3.0f;
-		text = "PlayScene";
-		text = text+stage+"-"+level;
+		text = stage+"-"+level;
+		Debug.Log(level);
 		last ++;
 	}
 
 	// Update is called once per frame
 	void Update () {
-		Debug.Log(currentTime);
-		Debug.Log(Time.time);
+		
 		if(Time.time > currentTime){
 			Debug.Log("in");
 			SceneManager.LoadScene(text);
 		}
+	}
+
+	public static void decreaseLast(){
+		last = 0;
 	}
 }

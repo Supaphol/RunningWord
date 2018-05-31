@@ -19,13 +19,13 @@ public class PlayerController : MonoBehaviour
 
 	public GameObject GOUI;
     float nextImmortalTime = 0f;
-
     // Use this for initialization
     void Start()
     {
         rb2d = gameObject.GetComponent<Rigidbody2D>();
         sr = gameObject.GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+        
         currentSprite = sr.sprite;
     }
 
@@ -107,19 +107,31 @@ public class PlayerController : MonoBehaviour
             Destroy(other.gameObject);
 
         }
+
+        if (other.gameObject.CompareTag("letter"))
+        {
+            AnswerBox ab = other.GetComponent<AnswerBox>();
+            ab.sentValue(ab.ans);
+            Destroy(other.gameObject);
+
+        }
     }
 
   public void Die()
     {
         // if (gameObject.Equals(null))
         // {
+            GoPlayScene.decreaseLast();
+        GoPrePlayScene.decreaseLastScene();
             Destroy(gameObject);
         // }
-        Time.timeScale = 0.0f;
+        
 
 		Instantiate(GOUI);
 
     }
+
+
 
     public void setLife(int life)
     {
